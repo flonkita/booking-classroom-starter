@@ -2,19 +2,37 @@ import { useState } from "react";
 import { View } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 
-const UserForm = () => {
-  const [credentials, setCredentials] = useState({
+interface UserFormProps {
+  onSubmit: (credentials: {
+    email: string;
+    password: string;
+    name: string;
+  }) => void;
+  buttonText?: string;
+  initialValues?: {
+    email: string;
+    password: string;
+    name: string;
+  };
+}
+
+const UserForm = ({ 
+  onSubmit, 
+  buttonText = "Submit",
+  initialValues = {
     email: "",
     password: "",
     name: "",
-  });
+  }
+}: UserFormProps) => {
+  const [credentials, setCredentials] = useState(initialValues);
 
   const handleChange = (key: string, value: string) => {
     setCredentials({ ...credentials, [key]: value });
   };
 
   const handleSubmit = () => {
-    console.log("credentials : ", credentials);
+    onSubmit(credentials);
   };
 
   return (
@@ -28,6 +46,7 @@ const UserForm = () => {
         label="Password"
         value={credentials.password}
         onChangeText={(value) => handleChange("password", value)}
+        secureTextEntry
       />
       <TextInput
         label="Name"
@@ -35,7 +54,7 @@ const UserForm = () => {
         onChangeText={(value) => handleChange("name", value)}
       />
       <Button mode="contained" onPress={handleSubmit}>
-        Submit
+        {buttonText}
       </Button>
     </View>
   );

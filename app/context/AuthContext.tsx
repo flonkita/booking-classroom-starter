@@ -4,7 +4,15 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { getToken, removeToken } from "../utils/token-jwt";
 import UserService from "../services/user.service";
 
-const AuthContext = createContext({});
+interface AuthContextType {
+  user: any | null;
+  setUser: (user: any | null) => void;
+}
+
+const AuthContext = createContext<AuthContextType>({
+  user: null,
+  setUser: () => {},
+});
 
 interface AuthContextProviderProps {
   children: React.ReactNode;

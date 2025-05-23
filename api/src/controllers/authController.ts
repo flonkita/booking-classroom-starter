@@ -78,6 +78,7 @@ export const signIn = async (c: Context) => {
   try {
     const body = await c.req.json();
     const validatedData = signInSchema.parse(body);
+    console.log(body);
 
     // Récupérer l'utilisateur
     const user = await prisma.user.findUnique({

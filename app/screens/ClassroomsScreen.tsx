@@ -11,7 +11,7 @@ const ClassroomsScreen = () => {
   }, []);
 
   const fetchAllClassrooms = async () => {
-    const response = await fetch("http://localhost:8000/api/classrooms");
+    const response = await fetch("http://172.19.160.1:8000/api/classrooms");
     const data = await response.json();
     console.log(data);
     setClassrooms(data);

@@ -31,8 +31,8 @@ npm install yup @hookform/resolvers
 
 ### Niveau 1 - Configuration des écrans et de la navigation
 
-- [ ] Configuration du projet et installation des dépendances
-- [ ] Mise en place de la navigation (Stack et Tab)
+- [ - ] Configuration du projet et installation des dépendances
+- [ - ] Mise en place de la navigation (Stack et Tab)
 
 ### Niveau 2 - Premier appel API
 
